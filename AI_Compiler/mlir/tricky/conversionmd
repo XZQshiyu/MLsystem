@@ -1,0 +1,15 @@
+Pattern转换
+
+`applyPartialConversion` 与 `applyPatternsAndFoldGreedily`
+
+应用于模式转换的两种API，目标都是应用指定的模式来转换操作，但场景和行为略有不同
+
+- applyPatternConversion：
+
+  **部分转换 (Partial Conversion)**：`applyPartialConversion` 主要用于将源代码的一部分转换为目标 dialect，但允许某些操作保留为不转换的形式。它通常用于希望保留一些操作未被转换的场景。
+
+  **目标合法化 (Target Legality)**：在调用 `applyPartialConversion` 时，可以通过 `ConversionTarget` 明确指定哪些操作是合法的（即在目标转换后应该保留的），哪些需要被模式转换。未被模式转换且未标记为合法的操作会导致转换失败。
+
+  **类型转换**：`applyPartialConversion` 通常与类型转换一起使用，可以支持更复杂的转换，包括类型降级。
+
+  **用法场景**：适用于需要指定合法性检查，并且需要在目标 dialect 之上添加未完全转换的操作时。例如，在将部分 `Linalg` 操作转换为 `Vector` 后，不需要完全合法化目标，但只希望 `Linalg` 操作逐步转换为 `Vector`。
