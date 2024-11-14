@@ -11,3 +11,17 @@
   - RAG
 - cuda生态链学习
 
+#### 11.14：
+
+- mlsys basics slide 3-5
+- 量子计算lab2
+- UMich lab1
+- paper about GPT
+
+## Phase2：
+
+- python和C++高级用法
+- 并型计算课程
+- 分布式机器学习书
+- 吴恩达机器学习
+
